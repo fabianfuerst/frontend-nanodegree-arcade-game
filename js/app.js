@@ -26,6 +26,8 @@ Enemy.prototype.update = function(dt) {
 
 // Collision checking between player and enemy
     if (player.x < this.x + 60 && player.x + 30 > this.x && player.y === this.y) {
+      playerInput =  Math.floor((Math.random() * 5) + 1);
+      player = new Player(200, 300, 50, playerInput);
       player.x = 200;
       player.y = 300;
     }
@@ -43,10 +45,7 @@ var Player = function(x, y, speed, randomCharacter) {
   this.x = x;
   this.y = y;
   this.speed = speed;
-  this.sprite = 'images/char-boy.png';
 
-
-/*  // decides character picture
   if (playerInput === 1) {
     this.sprite = 'images/char-boy.png';
   } else if (playerInput === 2) {
@@ -57,7 +56,7 @@ var Player = function(x, y, speed, randomCharacter) {
     this.sprite = 'images/char-pink-girl.png';
   } else if (playerInput === 5) {
     this.sprite = 'images/char-princess-girl.png';
-  } */
+  }
 };
 
 Player.prototype.update = function(){
@@ -76,6 +75,8 @@ Player.prototype.update = function(){
 
   // When Player reaches top to reset to start
   if  (this.y < 0) {
+    playerInput =  Math.floor((Math.random() * 5) + 1);
+    player = new Player(200, 300, 50, playerInput);
     this.x = 200;
     this.y = 300;
   }
@@ -112,7 +113,7 @@ Player.prototype.handleInput = function(keyPress) {
 // Place the player object in a variable called player
 var allEnemies = [];
 var enemyPositions = [60, 140, 220];
-var playerInput = Math.floor((Math.random() * 5) + 1);
+var playerInput =  Math.floor((Math.random() * 5) + 1);
 var player = new Player(200, 300, 50, playerInput);
 
 enemyPositions.forEach(function(yPosition) {
